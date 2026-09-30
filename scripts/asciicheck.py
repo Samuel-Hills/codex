@@ -90,7 +90,7 @@ def lint_utf8_ascii(filename: Path, fix: bool) -> bool:
     for lineno, line in enumerate(text.splitlines(keepends=True), 1):
         for colno, char in enumerate(line, 1):
             codepoint = ord(char)
-            if char == "\n":
+            if char in ("\r", "\n"):
                 continue
             if (
                 not (0x20 <= codepoint <= 0x7E)
